@@ -34,6 +34,10 @@ terraform apply
 terraform destroy
 ```
 
+## Notes
+
+- Cloud init configurations for debian and opensuse use runcmd to declare DNS.
+
 ## Available guests OS
 
 ### CentOS
@@ -70,6 +74,16 @@ Terraform with libvirt require image `cloudimg` in `img` (ex: `ubuntu-21.04-serv
 - [18.04](https://cloud-images.ubuntu.com/releases/bionic/release/ubuntu-18.04-server-cloudimg-amd64.img)
 - [20.04](https://cloud-images.ubuntu.com/releases/focal/release/ubuntu-20.04-server-cloudimg-amd64.img)
 - [21.04](https://cloud-images.ubuntu.com/releases/hirsute/release/ubuntu-21.04-server-cloudimg-amd64.img)
+
+### OpenSUSE
+
+- Default instance image : 15.2
+- Default instance name : tf-opensuse
+
+All OpenSuse images could be found [here](https://download.opensuse.org/repositories/Cloud:/Images:/)
+Terraform with libvirt require image `NoCloud` in `qcow2` (ex: `openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2`)
+
+- [15.2](https://download.opensuse.org/repositories/Cloud:/Images:/Leap_15.2/images/openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2)
 
 ## Variables
 
