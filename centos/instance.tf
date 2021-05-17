@@ -31,4 +31,3 @@ resource "libvirt_domain" "instance" {
     autoport = true
   }
 }
-

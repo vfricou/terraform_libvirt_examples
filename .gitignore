@@ -6,3 +6,12 @@
 .terraform*
 terraform*
 *.tfvars
+/cloud_init_configs/*
+!/cloud_init_configs/centos_network_config.yml
+!/cloud_init_configs/centos_user_config.yml
+!/cloud_init_configs/debian_network_config.yml
+!/cloud_init_configs/debian_user_config.yml
+!/cloud_init_configs/opensuse_network_config.yml
+!/cloud_init_configs/opensuse_user_config.yml
+!/cloud_init_configs/ubuntu_network_config.yml
+!/cloud_init_configs/ubuntu_user_config.yml
