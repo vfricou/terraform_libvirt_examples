@@ -1,11 +1,38 @@
 # Terraform libvirt
 
 This repository is base examples to use terraform with libvirt.  
+
+## Introduction
+
+### Requirements
+
+Theses examples require terraform and provisioners :
+- template
+- [dmacvicar/libvirt](https://github.com/dmacvicar/terraform-provider-libvirt)
+
+### Default deployment process
+
 Each examples deploy virtual machine (qemu) and :
 - setup user
 - setup ssh keys
 - configure static network
 - install qemu-guest-agent
+
+You could use default template to deploy instances in libvirt with basics terraform commands.  
+For example with centos :
+
+```shell
+# Go into centos folder
+cd centos
+# Initialize terraform
+terraform init
+# Plan terraform deployment
+terraform plan
+# Perform terraform deployment
+terraform apply
+# Destroy terraform ressources
+terraform destroy
+```
 
 ## Available guests OS
 
