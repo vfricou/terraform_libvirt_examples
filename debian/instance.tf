@@ -1,7 +1,7 @@
 resource "libvirt_domain" "instance" {
-  name = var.instance_name
+  name   = var.instance_name
   memory = var.instance_memory
-  vcpu = var.instance_vcpu
+  vcpu   = var.instance_vcpu
 
   cloudinit = libvirt_cloudinit_disk.cloudinit.id
 
@@ -26,8 +26,8 @@ resource "libvirt_domain" "instance" {
   }
 
   graphics {
-    type = "spice"
+    type        = "spice"
     listen_type = "address"
-    autoport = true
+    autoport    = true
   }
 }
