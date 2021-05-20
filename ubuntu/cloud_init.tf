@@ -1,9 +1,9 @@
 data "template_file" "user_data" {
-  template = file("${path.module}/../cloud_init_configs/ubuntu_user_config.yml")
+  template = file("${path.module}/${var.cloud_init_user_path}")
 }
 
 data "template_file" "network" {
-  template = file("${path.module}/../cloud_init_configs/ubuntu_network_config.yml")
+  template = file("${path.module}/${var.cloud_init_network_path}")
 }
 
 resource "libvirt_cloudinit_disk" "cloudinit" {

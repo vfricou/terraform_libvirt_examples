@@ -30,7 +30,19 @@ variable "instance_vcpu" {
   type = string
   default = "1"
 }
+variable "instance_disk" {
+  type = string
+  default = "21474836480"
+}
 variable "instance_net_name" {
   type = string
   default = "default"
+}
+variable "cloud_init_user_path" {
+  type = string
+  default = "../cloud_init_configs/ubuntu_user_config.yml"
+}
+variable "cloud_init_network_path" {
+  type = string
+  default = "../cloud_init_configs/ubuntu_network_config.yml"
 }
