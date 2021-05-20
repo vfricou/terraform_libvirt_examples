@@ -22,7 +22,7 @@ resource "libvirt_domain" "instance" {
   }
 
   disk {
-    volume_id = libvirt_volume.rootfs_volume.id
+    volume_id = libvirt_volume.rootfs_resized.id
   }
 
   graphics {
