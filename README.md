@@ -44,6 +44,8 @@ terraform destroy
 
 - Default instance image : 7
 - Default instance name : tf-centos
+- Default cloud init user config : '../cloud_init_configs/centos_user_config.yml'
+- Default cloud init network config : '../cloud_init_configs/centos_network_config.yml'
 
 All CentOS cloud images could be found [here](https://cloud.centos.org/centos/)  
 Terraform with libvirt require image `GenericCloud` in `qcow2` (ex: `CentOS-7-x86_64-GenericCloud-2009.qcow2`)
@@ -55,6 +57,8 @@ Terraform with libvirt require image `GenericCloud` in `qcow2` (ex: `CentOS-7-x8
 
 - Default instance image : 10
 - Default instance name : tf-debian
+- Default cloud init user config : '../cloud_init_configs/debian_user_config.yml'
+- Default cloud init network config : '../cloud_init_configs/debian_network_config.yml'
 
 All Debian cloud images could be found [here](https://cdimage.debian.org/images/cloud/)  
 Terraform with libvirt require image `generic` or `genericcloud` in `qcow2` (ex: `debian-10-generic-amd64-20210329-591.qcow2`)
@@ -67,6 +71,8 @@ Terraform with libvirt require image `generic` or `genericcloud` in `qcow2` (ex:
 
 - Default instance image : 20.04
 - Default instance name : tf-ubuntu
+- Default cloud init user config : '../cloud_init_configs/ubuntu_user_config.yml'
+- Default cloud init network config : '../cloud_init_configs/ubuntu_network_config.yml'
 
 All Ubuntu images could be found [here](https://cloud-images.ubuntu.com/releases)  
 Terraform with libvirt require image `cloudimg` in `img` (ex: `ubuntu-21.04-server-cloudimg-amd64.img`)
@@ -79,6 +85,8 @@ Terraform with libvirt require image `cloudimg` in `img` (ex: `ubuntu-21.04-serv
 
 - Default instance image : 15.2
 - Default instance name : tf-opensuse
+- Default cloud init user config : '../cloud_init_configs/opensuse_user_config.yml'
+- Default cloud init network config : '../cloud_init_configs/opensuse_network_config.yml'
 
 All OpenSuse images could be found [here](https://download.opensuse.org/repositories/Cloud:/Images:/)
 Terraform with libvirt require image `NoCloud` in `qcow2` (ex: `openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2`)
@@ -87,14 +95,17 @@ Terraform with libvirt require image `NoCloud` in `qcow2` (ex: `openSUSE-Leap-15
 
 ## Variables
 
-| Variable          | Default                         | Description                      |
-| ----------------- | ------------------------------- | -------------------------------- |
-| storage_pool_name | terraform                       | Libvirt storage pool name        |
-| storage_pool_type | dir                             | Libvirt storage pool type        |
-| storage_pool_path | /tmp/terraform_pool             | Libvirt storage pool location    | 
-| image_path        | Refer to (#available-guests-os) | Path or URL to find image        |
-| image_format      | qcow2                           | Target hdd volume format         |
-| instance_name     | Refer to (#available-guests-os) | Target install name into libvirt |
-| instance_memory   | 2048                            | Instance memory allocated        |
-| instance_vcpu     | 1                               | Instance vCPU allocated          |
-| instance_net_name | default                         | Instance network name to connect |
+| Variable                | Default                         | Description                             |
+| ----------------------- | ------------------------------- | --------------------------------------- |
+| storage_pool_name       | terraform                       | Libvirt storage pool name               |
+| storage_pool_type       | dir                             | Libvirt storage pool type               |
+| storage_pool_path       | /tmp/terraform_pool             | Libvirt storage pool location           | 
+| image_path              | Refer to (#available-guests-os) | Path or URL to find image               |
+| image_format            | qcow2                           | Target hdd volume format                |
+| instance_name           | Refer to (#available-guests-os) | Target install name into libvirt        |
+| instance_memory         | 2048                            | Instance memory allocated               |
+| instance_vcpu           | 1                               | Instance vCPU allocated                 |
+| instance_net_name       | default                         | Instance network name to connect        |
+| instance_disk           | 21474836480                     | Instance rootfs drive size (in bytes)   |
+| cloud_init_user_path    | Refer to (#available-guests-os) | Specify cloud init config file to use   |
+| cloud_init_network_path | Refer to (#available-guests-os) | Specify cloud init net conf file to use |
