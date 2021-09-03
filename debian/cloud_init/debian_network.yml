@@ -1,0 +1,7 @@
+version: 2
+ethernets:
+  ens3:
+    dhcp4: false
+    addresses:
+      - ${net_address}/${net_mask}
+    gateway4: ${net_gw4}
