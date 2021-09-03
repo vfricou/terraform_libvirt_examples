@@ -1,12 +1,13 @@
-resource "libvirt_domain" "instance" {
-  name   = var.instance_name
-  memory = var.instance_memory
-  vcpu   = var.instance_vcpu
+resource "libvirt_domain" "deb_instance" {
+  count  = length(var.instance_name)
+  name   = var.instance_name[count.index]
+  memory = var.instance_memory[count.index]
+  vcpu   = var.instance_vcpu[count.index]
 
-  cloudinit = libvirt_cloudinit_disk.cloudinit.id
+  cloudinit = libvirt_cloudinit_disk.clin_centos[count.index].id
 
   network_interface {
-    network_name = var.instance_net_name
+    network_name = var.net_name
   }
 
   console {
@@ -22,7 +23,7 @@ resource "libvirt_domain" "instance" {
   }
 
   disk {
-    volume_id = libvirt_volume.rootfs_resized.id
+    volume_id = libvirt_volume.rootfs_master_resized[count.index].id
   }
 
   graphics {
