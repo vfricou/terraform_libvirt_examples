@@ -1,22 +1,24 @@
 # Terraform libvirt
 
-This repository is base examples to use terraform with libvirt.  
+This repository is base examples to use terraform with libvirt.
 
 ## Introduction
 
 ### Requirements
 
 Theses examples require terraform and provisioners :
+
 - template
 - [dmacvicar/libvirt](https://github.com/dmacvicar/terraform-provider-libvirt)
 
 ### Default deployment process
 
 Each examples deploy virtual machine (qemu) and :
+
 - setup user
 - setup ssh keys
 - configure static network
-- install qemu-guest-agent
+- install qemu-guest-agent and python3
 
 You could use default template to deploy instances in libvirt with basics terraform commands.  
 For example with centos :
@@ -55,17 +57,17 @@ Terraform with libvirt require image `GenericCloud` in `qcow2` (ex: `CentOS-7-x8
 
 ### Debian
 
-- Default instance image : 10
-- Default instance name : tf-debian
-- Default cloud init user config : '../cloud_init_configs/debian_user_config.yml'
-- Default cloud init network config : '../cloud_init_configs/debian_network_config.yml'
+- Default instance image : 11
+- Default instance name : tf-debian-1
+- Default cloud init user config : 'cloud_init/debian_user.yml'
+- Default cloud init network config : 'cloud_init/debian_network.yml'
 
 All Debian cloud images could be found [here](https://cdimage.debian.org/images/cloud/)  
-Terraform with libvirt require image `generic` or `genericcloud` in `qcow2` (ex: `debian-10-generic-amd64-20210329-591.qcow2`)
+Terraform with libvirt require image `generic` or `genericcloud` in `qcow2` (
+ex: `debian-10-generic-amd64.qcow2`)
 
-- [10](https://cdimage.debian.org/images/cloud/buster/20210329-591/debian-10-generic-amd64-20210329-591.qcow2)
-- [11](https://cdimage.debian.org/images/cloud/bullseye/daily/20210517-640/debian-11-genericcloud-amd64-daily-20210517-640.qcow2)
-
+- [10](https://cdimage.debian.org/images/cloud/buster/latest/debian-10-generic-amd64.qcow2)
+- [11](https://cdimage.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2)
 
 ### Ubuntu
 
@@ -89,7 +91,8 @@ Terraform with libvirt require image `cloudimg` in `img` (ex: `ubuntu-21.04-serv
 - Default cloud init network config : '../cloud_init_configs/opensuse_network_config.yml'
 
 All OpenSuse images could be found [here](https://download.opensuse.org/repositories/Cloud:/Images:/)
-Terraform with libvirt require image `NoCloud` in `qcow2` (ex: `openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2`)
+Terraform with libvirt require image `NoCloud` in `qcow2` (
+ex: `openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2`)
 
 - [15.2](https://download.opensuse.org/repositories/Cloud:/Images:/Leap_15.2/images/openSUSE-Leap-15.2.x86_64-1.0.1-NoCloud-Build4.85.qcow2)
 
