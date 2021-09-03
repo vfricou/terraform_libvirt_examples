@@ -2,47 +2,67 @@ variable "storage_pool_name" {
   type    = string
   default = "terraform"
 }
-variable "storage_pool_type" {
-  type    = string
-  default = "dir"
-}
 variable "storage_pool_path" {
   type    = string
   default = "/tmp/terraform_pool"
 }
-variable "image_path" {
+variable "storage_pool_type" {
   type    = string
-  default = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-2009.qcow2"
+  default = "dir"
 }
 variable "image_format" {
   type    = string
   default = "qcow2"
 }
-variable "instance_name" {
-  type    = string
-  default = "tf-centos"
-}
 variable "instance_memory" {
-  type    = string
-  default = "2048"
+  type = list(string)
+  default = [
+    "2048"
+  ]
 }
 variable "instance_vcpu" {
-  type    = string
-  default = "1"
+  type = list(string)
+  default = [
+    "1"
+  ]
 }
 variable "instance_disk" {
-  type    = string
-  default = "21474836480"
+  type = list(string)
+  default = [
+    "21474836480"
+  ]
 }
-variable "instance_net_name" {
+variable "net_name" {
   type    = string
   default = "default"
 }
-variable "cloud_init_user_path" {
+variable "net_nameserver" {
   type    = string
-  default = "../cloud_init_configs/centos_user_config.yml"
+  default = "192.168.122.1"
 }
-variable "cloud_init_network_path" {
+variable "net_mask" {
   type    = string
-  default = "../cloud_init_configs/centos_network_config.yml"
+  default = "24"
+}
+variable "net_gw4" {
+  type    = string
+  default = "192.168.122.1"
+}
+variable "instance_name" {
+  type = list(string)
+  default = [
+    "tf-centos-1"
+  ]
+}
+variable "image_path" {
+  type = list(string)
+  default = [
+    "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud-2009.qcow2"
+  ]
+}
+variable "net_addr" {
+  type = list(string)
+  default = [
+    "192.168.122.200"
+  ]
 }
