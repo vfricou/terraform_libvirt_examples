@@ -1,4 +1,4 @@
-resource "libvirt_volume" "rootfs_volume" {
+resource "libvirt_volume" "rootfs_base" {
   count  = length(var.instance_name)
   name   = "${var.instance_name[count.index]}.qcow2"
   pool   = libvirt_pool.terraform.name
@@ -6,10 +6,10 @@ resource "libvirt_volume" "rootfs_volume" {
   format = var.image_format
 }
 
-resource "libvirt_volume" "rootfs_resized" {
+resource "libvirt_volume" "rootfs" {
   count          = length(var.instance_name)
   name           = "${var.instance_name[count.index]}-resized.qcow2"
-  base_volume_id = libvirt_volume.rootfs_volume[count.index].id
+  base_volume_id = libvirt_volume.rootfs_base[count.index].id
   pool           = libvirt_pool.terraform.name
   size           = var.instance_disk[count.index]
 }
