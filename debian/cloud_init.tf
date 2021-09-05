@@ -1,4 +1,4 @@
-data "template_file" "clin_debian_usr" {
+data "template_file" "user_data" {
   count    = length(var.instance_name)
   template = file("${path.module}/cloud_init/debian_user.yml")
   vars = {
@@ -6,7 +6,7 @@ data "template_file" "clin_debian_usr" {
     net_nameserver = var.net_nameserver
   }
 }
-data "template_file" "clin_debian_net" {
+data "template_file" "net_data" {
   count    = length(var.instance_name)
   template = file("${path.module}/cloud_init/debian_network.yml")
   vars = {
@@ -16,10 +16,10 @@ data "template_file" "clin_debian_net" {
   }
 }
 
-resource "libvirt_cloudinit_disk" "clin_debian" {
+resource "libvirt_cloudinit_disk" "cloudinit" {
   count          = length(var.instance_name)
   name           = "${var.instance_name[count.index]}-cloudinit.iso"
-  user_data      = data.template_file.clin_debian_usr[count.index].rendered
-  network_config = data.template_file.clin_debian_net[count.index].rendered
+  user_data      = data.template_file.user_data[count.index].rendered
+  network_config = data.template_file.net_data[count.index].rendered
   pool           = libvirt_pool.terraform.name
 }
