@@ -1,6 +1,6 @@
 data "template_file" "user_data" {
   count    = length(var.instance_name)
-  template = file("${path.module}/cloud_init/opensuse_user.yml")
+  template = file("${path.module}/cloud_init/user.yml")
   vars = {
     hostname       = var.instance_name[count.index]
     net_nameserver = var.net_nameserver
@@ -8,7 +8,7 @@ data "template_file" "user_data" {
 }
 data "template_file" "net_data" {
   count    = length(var.instance_name)
-  template = file("${path.module}/cloud_init/opensuse_network.yml")
+  template = file("${path.module}/cloud_init/network.yml")
   vars = {
     net_address = var.net_addr[count.index]
     net_mask    = var.net_mask
